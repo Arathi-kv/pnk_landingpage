@@ -36,7 +36,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Diagonal overlay */
+/* Diagonal overlay with animation */
 .left::after {
   content: "";
   position: absolute;
@@ -44,9 +44,28 @@ html, body {
   right: -120px;
   width: 220px;
   height: 100%;
-  background: linear-gradient(135deg, #0f2027, #203a43);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
   transform: skewX(-15deg);
   z-index: -1;
+
+  /* Animations */
+  animation: floatDiagonal 6s ease-in-out infinite alternate,
+             gradientShift 12s ease infinite;
+}
+
+/* Floating + rotation */
+@keyframes floatDiagonal {
+  0%   { transform: skewX(-15deg) translateY(0px) rotate(0deg); }
+  50%  { transform: skewX(-15deg) translateY(15px) rotate(2deg); }
+  100% { transform: skewX(-15deg) translateY(0px) rotate(0deg); }
+}
+
+/* Gradient shifting */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .content {
