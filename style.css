@@ -31,12 +31,12 @@ html, body {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 40px 6%; /* reduced for fitting */
+  padding: 40px 6%;
   z-index: 2;
   overflow: hidden;
 }
 
-/* Diagonal overlay */
+/* Diagonal overlay with animation */
 .left::after {
   content: "";
   position: absolute;
@@ -44,9 +44,28 @@ html, body {
   right: -120px;
   width: 220px;
   height: 100%;
-  background: linear-gradient(135deg, #0f2027, #203a43);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
   transform: skewX(-15deg);
   z-index: -1;
+
+  /* Animations */
+  animation: floatDiagonal 6s ease-in-out infinite alternate,
+             gradientShift 12s ease infinite;
+}
+
+/* Floating + rotation */
+@keyframes floatDiagonal {
+  0%   { transform: skewX(-15deg) translateY(0px) rotate(0deg); }
+  50%  { transform: skewX(-15deg) translateY(15px) rotate(2deg); }
+  100% { transform: skewX(-15deg) translateY(0px) rotate(0deg); }
+}
+
+/* Gradient shifting */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .content {
@@ -74,7 +93,7 @@ h1 {
 .contact-section {
   margin-top: 40px;
   padding-left: 20px;
-  border-left: 3px solid #d4af37; /* Elegant gold line */
+  border-left: 3px solid #d4af37;
 }
 
 .contact-section h3 {
@@ -115,16 +134,15 @@ h1 {
 }
 
 /* =========================
-   RIGHT SIDE IMAGE
+   RIGHT SIDE IMAGE + PARTICLES
 ========================= */
 .right {
   flex: 1;
   background: url("bg.jpg") no-repeat center center/cover;
   position: relative;
-  height: 100%; /* fill container */
+  height: 100%;
 }
 
-/* Dark overlay on image */
 .right::before {
   content: "";
   position: absolute;
@@ -132,86 +150,54 @@ h1 {
   background: rgba(0, 0, 0, 0.4);
 }
 
+
+/* =========================
+   ANIMATIONS
+========================= */
+.animated-middle {
+  opacity: 0;
+  animation: fadeInUp 1s forwards;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered delays for multiple elements */
+.animated-middle:nth-child(1) { animation-delay: 0.2s; }
+.animated-middle:nth-child(2) { animation-delay: 0.4s; }
+.animated-middle:nth-child(3) { animation-delay: 0.6s; }
+.animated-middle:nth-child(4) { animation-delay: 0.8s; }
+
 /* =========================
    RESPONSIVE
 ========================= */
-
-/* Tablet */
 @media (max-width: 1024px) {
-  .left {
-    width: 55%;
-    padding: 30px 5%;
-  }
-
-  h1 {
-    font-size: 38px;
-  }
-
-  .contact-line p {
-    font-size: 15px;
-  }
+  .left { width: 55%; padding: 30px 5%; }
+  h1 { font-size: 38px; }
+  .contact-line p { font-size: 15px; }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    height: 100vh; /* still full screen */
-  }
-
-  .left, .right {
-    width: 100%;
-  }
-
-  .left {
-    padding: 30px 15px;
-    align-items: flex-start;
-  }
-
-  .right {
-    height: 50%; /* half of viewport */
-  }
-
-  h1 {
-    font-size: 30px;
-    line-height: 1.3;
-  }
-
-  .contact-section {
-    margin-top: 30px;
-    padding-left: 15px;
-  }
-
-  .contact-section h3 {
-    font-size: 18px;
-  }
-
-  .contact-title {
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-
-  .contact-line p {
-    font-size: 14px;
-    line-height: 1.6;
-  }
+  .container { flex-direction: column; height: 100vh; }
+  .left, .right { width: 100%; }
+  .left { padding: 30px 15px; align-items: flex-start; }
+  .right { height: 50%; }
+  h1 { font-size: 30px; line-height: 1.3; }
+  .contact-section { margin-top: 30px; padding-left: 15px; }
+  .contact-section h3 { font-size: 18px; }
+  .contact-title { font-size: 12px; letter-spacing: 1px; }
+  .contact-line p { font-size: 14px; line-height: 1.6; }
 }
 
-/* Small Mobile */
 @media (max-width: 480px) {
-  h1 {
-    font-size: 24px;
-  }
-
-  .logo img {
-    max-width: 180px;
-  }
-
-  .contact-line p {
-    font-size: 13px;
-  }
-
-  .right {
-    height: 40%; /* smaller for small phones */
-  }
+  h1 { font-size: 24px; }
+  .logo img { max-width: 180px; }
+  .contact-line p { font-size: 13px; }
+  .right { height: 40%; }
 }
