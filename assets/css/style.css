@@ -3228,3 +3228,35 @@ color:#fff;
 .footer-widget__right-bottom{
     margin-top:40px;
 }
+
+
+.services-one__carousel .owl-stage {
+    display: flex;
+}
+
+.services-one__carousel .owl-item {
+    display: flex;
+    height: auto;
+}
+
+.services-one__single {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.services-one__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.services-one__btn {
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+.services-page .col-xl-4{
+    margin-bottom: 40px;
+}
