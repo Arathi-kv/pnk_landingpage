@@ -3289,3 +3289,34 @@ width:100%;
 .video-one{
 padding-bottom:80px;
 }
+
+
+.team-page{
+padding:80px 0;
+background:#f5f5f5;
+}
+
+.team-page .row{
+row-gap:40px;
+}
+
+.team-one__single{
+height:100%;
+}
+
+.team-one__img {
+    height: auto;
+    overflow: hidden;
+}
+
+.team-one__img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.team-one__content{
+text-align:center;
+padding:20px 15px;
+}
