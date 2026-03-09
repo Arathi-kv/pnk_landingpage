@@ -3331,3 +3331,28 @@ transform:translateY(-8px);
 transition:0.3s;
 box-shadow:0 15px 40px rgba(0,0,0,0.08);
 }
+
+.mobile-call-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#d4b24c;
+color:#fff;
+padding:12px 18px;
+border-radius:50px;
+font-size:16px;
+z-index:999;
+display:none;
+text-decoration:none;
+}
+
+.mobile-call-btn i{
+margin-right:5px;
+}
+
+/* Show only on mobile */
+@media (max-width:768px){
+.mobile-call-btn{
+display:block;
+}
+}
