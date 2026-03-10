@@ -3436,3 +3436,30 @@ line-height:1.7;
 /*--------------------------------------------------------------
 # End All Css
 --------------------------------------------------------------*/
+
+.mobile-call-btn{
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: #d4b24c;
+color: #fff;
+padding: 12px 18px;
+border-radius: 50px;
+font-size: 16px;
+font-weight: 600;
+text-decoration: none;
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+z-index: 999;
+display: none;
+}
+
+.mobile-call-btn i{
+margin-right:6px;
+}
+
+/* Show only on mobile */
+@media (max-width:768px){
+.mobile-call-btn{
+display: inline-block;
+}
+}
