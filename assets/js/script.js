@@ -1738,4 +1738,3 @@ window.rejectDisclaimer = function () {
 
 
 })(jQuery);
-
